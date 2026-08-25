@@ -75,7 +75,7 @@ Głównym założeniem projektu było wdrożenie środowiska testowego z systeme
 ### Dochodzenie 1: Manipulacja Kontem (Windows 10)
 System Wazuh zaalarmował o podejrzanej zmianie w konfiguracji systemu operacyjnego. Zidentyfikowano, że konto `Guest`, które standardowo jest wyłączone ze względów bezpieczeństwa, zostało aktywowane. 
 
-> 💡 **Uwaga dotycząca detekcji:** Zamiast polegać na domyślnych alertach, napisałem niestandardową regułę detekcji która monitoruje konto gościa. Pełny kod tej reguły (jak i pozostałych, użytych w projekcie) znajduje się w dedykowanym pliku **`custom_rules.xml`** dostępnym w tym repozytorium.
+> 💡 **Uwaga dotycząca detekcji:** Zamiast polegać wyłącznie na domyślnych alertach, stworzyłem własne reguły detekcji (Custom Rules) w systemie Wazuh. Obejmują one  monitorowanie aktywacji konta gościa oraz korelację zdarzeń wykrywającą ataki SSH Brute-Force (rejestracja 3 nieudanych prób logowania z tego samego adresu IP w oknie 120 sekund). Pełny kod tych reguł wraz z komentarzami znajduje się w dedykowanym pliku **`custom_rules.xml`** w tym repozytorium.
 
 ####  Analiza zdarzenia (Triage 5W1H):
 - **WHO (Kto):** Nieznany sprawca posiadający dostęp z podwyższonymi uprawnieniami (wykonano podczas testów lokalnych).
