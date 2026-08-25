@@ -1,3 +1,4 @@
+<img width="325" height="331" alt="schemat (1)" src="https://github.com/user-attachments/assets/dbfee7ee-2497-44d6-8677-30812a11440c" />
 # 🛡️ SOC Home Lab: Wazuh SIEM & Automatyzacja (Active Response)
 
 ## 🎯 Cel Projektu :
@@ -8,7 +9,7 @@ Głównym założeniem projektu było wdrożenie środowiska testowego z systeme
 
 ## 🏗️ Architektura Środowiska :
 
-<img width="325" height="331" alt="schemat" src="https://github.com/user-attachments/assets/2dd0931f-0797-453e-8257-6d38f71ef692" />
+<img width="335" height="331" alt="schemat" src="https://github.com/user-attachments/assets/f7ff26fb-8076-48f9-bebb-4517d06af25a" />
 
 ## 🧰 Wykorzystane Narzędzia :
 - Wazuh SIEM (Server, Indexer, Dashboard)
