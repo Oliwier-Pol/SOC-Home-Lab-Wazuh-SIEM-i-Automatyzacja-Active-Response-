@@ -3,8 +3,6 @@
 ## 📖 Opis Projektu
 To repozytorium dokumentuje architekturę, konfigurację oraz praktyczne scenariusze reagowania na incydenty (Incident Response) zrealizowane w ramach własnego, domowego laboratorium SOC (Security Operations Center). Głównym celem projektu było wdrożenie systemu SIEM, konfiguracja telemetrii na stacjach końcowych, tworzenie własnych reguł detekcji oraz implementacja automatycznej mitygacji zagrożeń (moduł Active Response).
 
-> **Podziękowania:** Projekt został zainspirowany i zbudowany w oparciu o koncepcje z serii *"Build a SOC Lab with Wazuh"* autorstwa kanału MyDFIR.
-
 ## 🏗️ Architektura Laboratorium
 Środowisko składa się z maszyny hosta, która zarządza trzema dedykowanymi maszynami wirtualnymi (VM), symulując w ten sposób firmową sieć:
 
