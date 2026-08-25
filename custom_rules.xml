@@ -1,6 +1,5 @@
-<group name="windows,windows_security,account_changed,adduser">
-
-  <!-- Reguła 1: Wykrywanie włączenia konta gościa (Wsparcie języka polskiego i angielskiego) -->
+<!-- Reguła 1: Wykrywanie włączenia konta gościa (Wsparcie języka polskiego i angielskiego) -->
+  <group name="windows,windows_security,account_changed,adduser">
   <rule id="100050" level="10">
   <if_sid>60103</if_sid>
     <if_group>windows</if_group>
