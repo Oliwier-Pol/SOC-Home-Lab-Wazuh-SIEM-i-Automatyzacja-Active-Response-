@@ -1,45 +1,85 @@
-# 🛡️ SOC Home Lab: Wazuh SIEM i Automatyzacja (Active Response)
+# 🛡️ SOC Home Lab: Wazuh SIEM & Automatyzacja (Active Response)
 
-## 📖 Opis Projektu
-To repozytorium dokumentuje architekturę, konfigurację oraz praktyczne scenariusze reagowania na incydenty (Incident Response) zrealizowane w ramach własnego, domowego laboratorium SOC (Security Operations Center). Głównym celem projektu było wdrożenie systemu SIEM, konfiguracja telemetrii na stacjach końcowych, tworzenie własnych reguł detekcji oraz implementacja automatycznej mitygacji zagrożeń (moduł Active Response).
+## 🎯 Cel Projektu :
+Zbudowanie i konfiguracja środowiska SOC (Security Operations Center) od podstaw w celu zaprezentowania działania systemu SIEM, telemetrii stacji końcowych, tworzenia reguł detekcji oraz automatyzacji obrony z wykorzystaniem Active Response.
 
-## 🏗️ Architektura Laboratorium
-Środowisko składa się z maszyny hosta, która zarządza trzema dedykowanymi maszynami wirtualnymi (VM), symulując w ten sposób firmową sieć:
+## 📊 Opis Projektu :
+Głównym założeniem projektu było wdrożenie środowiska testowego z systemem Wazuh SIEM. Środowisko posłużyło do symulacji ataków sieciowych (na usługi) oraz wektorów kompromitacji stacji końcowej, a następnie do wykreowania odpowiednich mechanizmów alarmowania i natychmiastowej mitygacji.
 
-*   **Maszyna Hosta (Windows 10 Pro):** Pełni rolę hipernadzorcy (Hypervisor) oraz głównej stacji roboczej służącej do zarządzania środowiskiem i dostępu do panelu Wazuh.
-*   **Serwer Wazuh (Ubuntu 24.04 LTS):** Główny węzeł systemu SIEM. Utrzymuje komponenty takie jak Wazuh Indexer, Server oraz Dashboard.
-*   **Endpoint Linux (Ubuntu 24.04 LTS):** Maszyna skonfigurowana z agentem Wazuh oraz narzędziem Sysmon dla systemu Linux. Stanowi główny cel ataków sieciowych (SSH).
-*   **Endpoint Windows (Windows 10 Pro):** Maszyna skonfigurowana z agentem Wazuh oraz narzędziem Sysmon dla systemu Windows. Stanowi główny cel ataków bezpośrednio na system operacyjny (Manipulacja kontami).
+## 🏗️ Architektura Środowiska :
 
-## 🛠️ Wykorzystane Narzędzia i Technologie
-*   **SIEM:** Wazuh
-*   **Detekcja na stacjach końcowych (EDR / Telemetria):** Sysmon (Windows & Linux), Agenty Wazuh
-*   **Systemy Operacyjne:** Ubuntu 24.04 LTS, Windows 10 Pro
-*   **Kluczowe zagadnienia:** Akwizycja logów (Log Ingestion), Tworzenie własnych reguł (Custom Rule Creation), Aktywna Obrona (Active Response), Personalizacja Dashboardów, Raportowanie Incydentów (5W1H).
+<img width="325" height="331" alt="schemat" src="https://github.com/user-attachments/assets/2dd0931f-0797-453e-8257-6d38f71ef692" />
+
+## 🧰 Wykorzystane Narzędzia :
+- Wazuh SIEM (Server, Indexer, Dashboard)
+- Sysmon (System Monitor dla Windows i Linux)
+- Ubuntu 24.04 LTS (Serwer i stacja robocza)
+- Windows 10 Pro (Host i stacja robocza)
+- Vmware Workstation Pro (Obsługa wirtualnych maszyn)
+
+## 🛠️ Zaprezentowane Umiejętności :
+- Integracja i wdrożenie systemu Wazuh oraz agentów na stacjach końcowych (Windows i Linux).
+- Instalacja i konfiguracja narzędzia Sysmon w celu wzbogacenia logów systemowych.
+- Projektowanie i testowanie własnych reguł w Wazuh.
+- Stworzenie spersonalizowanych dashboardów do wizualizacji zdarzeń bezpieczeństwa i alarmów.
+- Symulacja ataku typu SSH Brute-Force oraz manipulacji kontami systemowymi w Windows.
+- Wdrożenie automatycznej odpowiedzi na incydent (SOAR) za pomocą mechanizmu Wazuh Active Response.
+- Tworzenie raportu dochodzeniowego przy użyciu metodologii 5W1H.
+
+## 📁 Kluczowe Wyniki :
+- W pełni funkcjonalne wdrożenie SIEM.
+- Niestandardowy Dashboard SOC w systemie Wazuh.
+- Działające reguły detekcyjne.
+- Zautomatyzowany mechanizm blokady zagrożeń w czasie rzeczywistym.
+- Raport z analizy incydentów.
+
+## 🔍 Wykonane Kroki :
+1. Utworzenie środowiska maszyn wirtualnych:
+   - Host (Windows 10 Pro) – zarządzanie i wyświetlanie dashboardu.
+   - Serwer Wazuh (Ubuntu 24.04 LTS).
+   - Stacja końcowa Linux (Ubuntu 24.04 LTS) – z agentem Wazuh i Sysmon.
+   - Stacja końcowa Windows (Windows 10 Pro) – z agentem Wazuh i Sysmon.
+
+📌 Zrzuty ekranu z konfiguracji środowiska:
+<img width="390" height="230" alt="Zrzut z maszyn wirtualnych" src="" />
+
+2. Wdrożenie narzędzia Sysmon i skonfigurowanie agentów Wazuh na wszystkich stacjach końcowych w celu centralizacji logów.
+
+📌 Zrzut ekranu z poprawnie podłączonymi agentami w panelu Wazuh:
+<img width="785" height="450" alt="Agenty Wazuh" src="" />
+
+3. Utworzenie dedykowanego Dashboardu w Wazuh do monitorowania kluczowych incydentów.
+
+📌 Zrzuty ekranu Dashboardu:
+<img width="390" height="230" alt="Custom Dashboard 1" src="" />
+
+4. Symulacja Manipulacji Kontem (MITRE T1098).
+   - Ręczna aktywacja domyślnie wyłączonego konta "Guest" na stacji Windows.
+   - Opracowanie własnej reguły (Custom Rule) podnoszącej powiadomienie o krytycznym alercie z Event ID 60106 z Sysmona.
+
+📌 Zrzuty ekranu wyzwolonego alertu:
+<img width="785" height="230" alt="Alert Windows Guest" src="" />
+
+5. Symulacja ataku SSH Brute-Force (MITRE T1110) i wdrożenie Active Response.
+   - Przeprowadzenie ataku siłowego na port SSH na maszynie Linux (Ubuntu).
+   - Konfiguracja modułu Active Response blokującego IP w zaporze na 2 minuty po wystąpieniu 3 błędnych logowań.
+
+📌 Zrzuty ekranu blokady IP:
+<img width="785" height="230" alt="Active Response Trigger" src="" />
 
 ---
 
-## 🎯 Scenariusze Ataków i Automatyczna Detekcja
+## 🚨 Raport z Dochodzenia (Investigation Report):
 
-### Scenariusz 1: Manipulacja Kontem (MITRE ATT&CK T1098)
-*   **Działanie:** Domyślnie wyłączone konto `Gość` (`Guest`) na systemie Windows 10 zostało ręcznie aktywowane.
-*   **Detekcja:** Sysmon zarejestrował zmiany w systemie, a log z tym zdarzeniem został natychmiast przesłany do systemu Wazuh.
-*   **Modyfikacja:** W systemie Wazuh stworzyłem **własną regułę (Custom Rule)**. Dzięki temu, zamiast zaginąć w gąszczu standardowych logów operacyjnych, jakakolwiek zmiana statusu konta "Gość" natychmiast generuje alert o wysokim priorytecie (High Severity) na dedykowanym dashboardzie, powiadamiając analityka SOC o potencjalnej próbie utrzymania dostępu (Persistence) przez atakującego.
+### Dochodzenie 1: Manipulacja Kontem (Windows 10)
+System Wazuh zaalarmował o podejrzanej zmianie w konfiguracji systemu operacyjnego. Zidentyfikowano, że konto `Guest`, które standardowo jest wyłączone ze względów bezpieczeństwa, zostało aktywowane. 
 
-### Scenariusz 2: Atak SSH Brute-Force i Active Response (MITRE ATT&CK T1110)
-*   **Działanie:** Przeprowadzono symulację ataku słownikowego (Brute-Force) na port SSH maszyny Linux (Ubuntu) ze stacji Windows.
-*   **Detekcja:** Agent Wazuh wykrył liczne nieudane próby uwierzytelnienia (na podstawie logów demona `sshd`).
-*   **Aktywna Obrona (Wazuh Firewall):** Skonfigurowałem moduł **Active Response**, aby system automatycznie i bez udziału człowieka neutralizował zagrożenie. Po wykryciu **3 nieudanych prób logowania w oknie czasowym 2 minut**, adres IP atakującego jest automatycznie dodawany do czarnej listy i blokowany na poziomie lokalnej zapory sieciowej serwera.
-*   **Rezultat:** Atak został całkowicie powstrzymany w czasie rzeczywistym, a dla analityka wygenerowano zautomatyzowany alert z podsumowaniem zdarzenia.
+> 💡 **Uwaga dotycząca detekcji:** Zamiast polegać na domyślnych alertach, napisałem niestandardową regułę detekcji która monitoruje konto gościa. Pełny kod tej reguły (jak i pozostałych, użytych w projekcie) znajduje się w dedykowanym pliku **`custom_rules.xml`** dostępnym w tym repozytorium.
 
----
-
-## 📊 Dashboardy i Raportowanie
-Na potrzeby projektowych scenariuszy zaprojektowano **własny Dashboard (Custom Dashboard)** w systemie Wazuh. Pozwala on na łatwą wizualizację kluczowej telemetrii: śledzenie nieudanych logowań, kategoryzację zdarzeń z Sysmona oraz monitorowanie akcji podjętych przez moduł Active Response.
-
-Do repozytorium dołączony jest również oficjalny **Raport z Incydentu (Incident Response Report)**, w którym szczegółowo, z technicznego punktu widzenia, opisałem przebieg ataków przy użyciu metodologii 5W1H (Kto, Co, Kiedy, Gdzie, Dlaczego, Jak) oraz przedstawiłem rekomendacje naprawcze.
-
-## 🚀 Kluczowe Umiejętności i Wnioski
-1.  **Głęboka widoczność procesów (Endpoint Visibility):** Pomyślne wdrożenie narzędzia Sysmon (zarówno na Windowsie, jak i Linuxie) w celu drastycznego zwiększenia jakości i użyteczności logów (Log Fidelity).
-2.  **Zaawansowane reguły detekcji:** Praktyczne doświadczenie w pisaniu, testowaniu i wdrażaniu własnych reguł oraz dekoderów w systemie Wazuh.
-3.  **Automatyzacja i SOAR:** Zrozumienie i zaimplementowanie mechanizmów aktywnej obrony (Active Response), co stanowi fundament nowoczesnych operacji typu Security Orchestration, Automation, and Response.
+#### 🧐 Analiza zdarzenia (Triage 5W1H):
+- **WHO (Kto):** Nieznany sprawca posiadający dostęp z podwyższonymi uprawnieniami (wykonano podczas testów lokalnych).
+- **WHAT (Co):** Modyfikacja atrybutów systemowych prowadząca do włączenia lokalnego konta użytkownika `Guest`.
+- **WHEN (Kiedy):** (Wstaw rzeczywistą datę i godzinę ze zrzutu ekranu, np. 2026-08-25 10:15 UTC).
+- **WHERE (Gdzie):** Maszyna końcowa oznaczona jako Windows 10 Endpoint.
+- **WHY (Dlaczego):** Uruchomienie ukrytych/nieużywanych kont to typowa technika atakujących w celu zdobycia trwałego dostępu (Persistence) do systemu bez wzbudzania podejrzeń.
+- **HOW (Jak):** Przez użycie wbudowanych narzędzi administracyjnych systemu operacyjnego Windows (np. z wiersza poleceń / Zarządzania komputerem).
