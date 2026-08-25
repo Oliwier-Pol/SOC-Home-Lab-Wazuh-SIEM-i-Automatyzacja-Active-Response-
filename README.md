@@ -77,10 +77,10 @@ System Wazuh zaalarmował o podejrzanej zmianie w konfiguracji systemu operacyjn
 
 > 💡 **Uwaga dotycząca detekcji:** Zamiast polegać na domyślnych alertach, napisałem niestandardową regułę detekcji która monitoruje konto gościa. Pełny kod tej reguły (jak i pozostałych, użytych w projekcie) znajduje się w dedykowanym pliku **`custom_rules.xml`** dostępnym w tym repozytorium.
 
-#### 🧐 Analiza zdarzenia (Triage 5W1H):
+####  Analiza zdarzenia (Triage 5W1H):
 - **WHO (Kto):** Nieznany sprawca posiadający dostęp z podwyższonymi uprawnieniami (wykonano podczas testów lokalnych).
 - **WHAT (Co):** Modyfikacja atrybutów systemowych prowadząca do włączenia lokalnego konta użytkownika `Guest`.
-- **WHEN (Kiedy):** (Wstaw rzeczywistą datę i godzinę ze zrzutu ekranu, np. 2026-08-25 10:15 UTC).
+- **WHEN (Kiedy):** 
 - **WHERE (Gdzie):** Maszyna końcowa oznaczona jako Windows 10 Endpoint.
 - **WHY (Dlaczego):** Uruchomienie ukrytych/nieużywanych kont to typowa technika atakujących w celu zdobycia trwałego dostępu (Persistence) do systemu bez wzbudzania podejrzeń.
 - **HOW (Jak):** Przez użycie wbudowanych narzędzi administracyjnych systemu operacyjnego Windows (np. z wiersza poleceń / Zarządzania komputerem).
