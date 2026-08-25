@@ -1,4 +1,4 @@
-<img width="325" height="331" alt="schemat (1)" src="https://github.com/user-attachments/assets/dbfee7ee-2497-44d6-8677-30812a11440c" />
+
 # 🛡️ SOC Home Lab: Wazuh SIEM & Automatyzacja (Active Response)
 
 ## 🎯 Cel Projektu :
